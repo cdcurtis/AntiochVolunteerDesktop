@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:AntiochVolunteer.ViewModels"
+                    xmlns:vw="clr-namespace:AntiochVolunteer.Views">
+    
+    <DataTemplate DataType="{x:Type vm:WelcomeViewModel}">
+        <vw:WelcomeView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AddVolunteerDlgViewModel}">
+        <vw:AddVolunteerDlgView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AddJobDlgViewModel}">
+        <vw:AddJobDlgView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AddEventDlgViewModel}">
+        <vw:AddEventDlgView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AddScheduleDlgViewModel}">
+        <vw:AddScheduleDlgView/>
+    </DataTemplate>
+</ResourceDictionary>

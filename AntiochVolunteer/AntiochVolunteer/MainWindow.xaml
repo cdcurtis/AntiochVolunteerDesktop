@@ -1,0 +1,40 @@
+﻿<Window x:Class="AntiochVolunteer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:AntiochVolunteer.ViewModels"
+        xmlns:strings="clr-namespace:AntiochVolunteer.Resources.Strings"
+        xmlns:res="clr-namespace:AntiochVolunteer.Resources"
+        Title="{Binding DisplayName}" Height="350" Width="525">
+
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml" />
+    </Window.Resources>
+
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top" KeyboardNavigation.TabNavigation="None">
+            <Menu KeyboardNavigation.TabNavigation="Cycle">
+                <MenuItem Header="_File">
+                    <MenuItem Header="E_xit" Command="{Binding Path=CloseCommand}" />
+                </MenuItem>
+                <MenuItem Header="{x:Static strings:GenericStrings.VOLUNTEERS}">
+                    <MenuItem Header="{x:Static strings:GenericStrings.VIEW_VOLUNTEERS}" Command="{Binding OnOpenVolunteersPage}" />
+                    <MenuItem Header="{x:Static strings:GenericStrings.CREATE_NEW_VOLUNTEER}" Command="{Binding OnCreateNewVolunteer}" />
+                </MenuItem>
+                <MenuItem Header="{x:Static strings:GenericStrings.JOBS}">
+                    <MenuItem Header="{x:Static strings:GenericStrings.VIEW_JOBS}" Command="{Binding OnOpenJobsPage}" />
+                    <MenuItem Header="{x:Static strings:GenericStrings.CREATE_NEW_JOB}" Command="{Binding OnCreateNewJob}" />
+                </MenuItem>
+                <MenuItem Header="{x:Static strings:GenericStrings.EVENTS}">
+                    <MenuItem Header="{x:Static strings:GenericStrings.VIEW_EVENTS}" Command="{Binding OnOpenEventPage}"/>
+                    <MenuItem Header="{x:Static strings:GenericStrings.CREATE_NEW_EVENT}" Command="{Binding OnCreateNewEvent}"/>
+                </MenuItem>
+                <MenuItem Header="{x:Static strings:GenericStrings.SCHEDULE}">
+                    <MenuItem Header="{x:Static strings:GenericStrings.VIEW_SCHEDULE}" Command="{Binding OnOpenSchedulePage}"/>
+                    <MenuItem Header="{x:Static strings:GenericStrings.CREATE_NEW_SCHEDULE}" Command="{Binding OnCreateNewSchedule}"/>
+                </MenuItem>
+                <MenuItem Header="_Help" />
+            </Menu>
+        </DockPanel>
+        <ContentControl Content="{Binding CurrentViewModel}" />
+    </DockPanel>
+</Window>

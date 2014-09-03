@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="AntiochVolunteer.Views.AddScheduleDlgView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:strings="clr-namespace:AntiochVolunteer.Resources.Strings"
+             
+             mc:Ignorable="d" 
+             MinHeight="300"
+             d:DesignWidth="960">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+    <GroupBox Header="{x:Static strings:GenericStrings.CREATE_NEW_SCHEDULE}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                       
+                    </Grid>
+                    
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid  Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Grid.Column="0" Margin="10" IsChecked="{Binding LinkAllVolunteers}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Margin="10" Text="{x:Static strings:GenericStrings.USE_SAME_VOLS}"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                
+                <Grid Grid.Column="1" Background="Black"/>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Row="0" Margin="10" Header="{x:Static strings:GenericStrings.EVENTS}">
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <!-- TODO: Add HYPERLINKED SELECT ALL CLEAR SELECTION -->
+                            </Grid>
+                            
+                            <DataGrid Grid.Row="1" ItemsSource="{Binding SavedEvents}">
+                                
+                            </DataGrid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Content="{x:Static strings:GenericStrings.ADD_TO_SCHEDULING}" Margin="10" Command="{Binding OnAddToScheduling}" HorizontalAlignment="Center"/>
+                                <Button Grid.Column="1" Content="{x:Static strings:GenericStrings.CREATE_NEW_EVENT}" Margin="10" Command="{Binding OnCreateNewEvent}" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Row="1" Margin="10" Header="{x:Static strings:GenericStrings.VOLUNTEERS}">
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <DataGrid Grid.Row="0" ItemsSource="{Binding SavedEvents}">
+
+                            </DataGrid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Content="{x:Static strings:GenericStrings.ADD_TO_SCHEDULING}" Margin="10,10,5,10" Command="{Binding OnAddVolunteerToScheduling}"/>
+                                <Button Grid.Column="1" Content="{x:Static strings:GenericStrings.CREATE_NEW_VOLUNTEER}" Margin="5,10,5,10" Command="{Binding OnCreateNewVolunteer}" />
+                            </Grid>
+                        </Grid>
+
+                    </GroupBox>
+                </Grid>
+            </Grid>
+        </GroupBox>
+   <!--  <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="2" Content="{x:Static strings:GenericStrings.OK}" Command="{Binding OnOK}"/>
+            <Button Grid.Column="3" Content="{x:Static strings:GenericStrings.CANCEL}" Command="{Binding OnCancel}"/>
+        </Grid> -->
+    </Grid>
+</UserControl>
