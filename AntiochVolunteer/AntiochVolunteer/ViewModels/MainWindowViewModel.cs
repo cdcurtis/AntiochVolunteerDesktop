@@ -16,23 +16,25 @@ namespace AntiochVolunteer.ViewModels
         private Stack<ViewModelBase> _history;
         private ViewModelBase _currentViewModel;
 
-        public MainWindowViewModel(string customerDataFile)
+        public MainWindowViewModel()
         {
+            AppData = new ApplicationData();
             _history = new Stack<ViewModelBase>();
 
             base.DisplayName = "Loaded Main Window Correctly";
 
           
-
-
             OnCreateNewEvent = new RelayCommand(() => OpenCreateNewEventDlg());
             OnCreateNewVolunteer = new RelayCommand(() => OpenCreateNewVolunteerDlg());
+            OnOpenVolunteersPage = new RelayCommand(() => OpenVolunteerView());
+            OnCreateNewJob = new RelayCommand(() => OpenCreateNewJobDlg());
+            OnCreateNewSchedule = new RelayCommand(() => OpenCreateNewScheduleDlg());
 
 
             CurrentViewModel = new WelcomeViewModel(this);
         }
 
-        public ApplicationData ApplicationData
+        public ApplicationData AppData
         {
             get;
             protected set;
@@ -54,7 +56,16 @@ namespace AntiochVolunteer.ViewModels
 
 
         #region ICommands
+        public ICommand OnSave { get; private set; }
+        private void SaveApplication()
+        {
+            //convert application to an encrypted CSV.
+        }
         public ICommand OnOpenVolunteersPage { get; private set; }
+        private void OpenVolunteerView()
+        {
+            CurrentViewModel = new VolunteersViewModel(this);
+        }
         public ICommand OnCreateNewVolunteer { get; private set; }
         private void OpenCreateNewVolunteerDlg()
         {
@@ -79,18 +90,14 @@ namespace AntiochVolunteer.ViewModels
         }
         public ICommand OnOpenSchedulePage { get; private set; }
         public ICommand OnCreateNewSchedule { get; private set; }
-        #endregion
-
-        #region PropertyChanged
-        public new event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName = "")
+        private void OpenCreateNewScheduleDlg()
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            _history.Push(this);
+            CurrentViewModel = new AddScheduleDlgViewModel(this);
         }
         #endregion
+
+
 
     }
 }

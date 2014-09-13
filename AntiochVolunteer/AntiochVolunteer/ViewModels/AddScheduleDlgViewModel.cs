@@ -8,5 +8,10 @@ namespace AntiochVolunteer.ViewModels
 {
     public class AddScheduleDlgViewModel : ViewModelBase
     {
+        private ViewModelBase _parent;
+        public AddScheduleDlgViewModel(ViewModelBase parent)
+        {
+            _parent = parent;
+        }
     }
 }

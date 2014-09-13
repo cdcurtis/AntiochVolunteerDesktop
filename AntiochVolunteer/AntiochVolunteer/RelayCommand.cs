@@ -34,4 +34,5 @@ namespace AntiochVolunteer
         public void RaiseCanExecuteChanged()
         { CanExecuteChanged(this, new EventArgs()); }
     }
+
 }

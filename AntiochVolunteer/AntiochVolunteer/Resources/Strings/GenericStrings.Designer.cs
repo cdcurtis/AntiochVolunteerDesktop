@@ -61,6 +61,15 @@ namespace AntiochVolunteer.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Skill.
+        /// </summary>
+        public static string ADD_SKILL {
+            get {
+                return ResourceManager.GetString("ADD_SKILL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add to scheduling.
         /// </summary>
         public static string ADD_TO_SCHEDULING {
@@ -147,6 +156,15 @@ namespace AntiochVolunteer.Resources.Strings {
         public static string DESCRIPTION {
             get {
                 return ResourceManager.GetString("DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details View.
+        /// </summary>
+        public static string DETAILS_VIEW {
+            get {
+                return ResourceManager.GetString("DETAILS_VIEW", resourceCulture);
             }
         }
         
@@ -273,6 +291,15 @@ namespace AntiochVolunteer.Resources.Strings {
         public static string SELECT_ALL {
             get {
                 return ResourceManager.GetString("SELECT_ALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select skills sets from below.
+        /// </summary>
+        public static string SELECT_SKILL_SETS {
+            get {
+                return ResourceManager.GetString("SELECT_SKILL_SETS", resourceCulture);
             }
         }
         

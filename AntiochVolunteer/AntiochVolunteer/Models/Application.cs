@@ -5,23 +5,31 @@ using System.Text;
 using System.Threading.Tasks;
 using AntiochVolunteer.ViewModels;
 using System.Collections;
+using System.Collections.ObjectModel;
+
 
 namespace AntiochVolunteer.Models
 {
     public class ApplicationData
     {
-        private List<Job> _jobsMasterList;
-        private List<Event> _eventMasterList;
-        private List<Schedule> _scheduleMasterList;
-        private List<Volunteer> _volunteerMasterList;
+        private ObservableCollection<Job> _jobsMasterList;
+        private ObservableCollection<Event> _eventMasterList;
+        private ObservableCollection<Schedule> _scheduleMasterList;
+        private ObservableCollection<Volunteer> _volunteerMasterList;
+        private ObservableCollection<SkillSet> _skillSetMasterList;
+
         private IDGen _IDGenerator;
 
         public ApplicationData()
         {
-            _jobsMasterList = new List<Job>();
-            _eventMasterList = new List<Event>();
-            _scheduleMasterList = new List<Schedule>();
-            _volunteerMasterList = new List<Volunteer>();
+            _jobsMasterList = new ObservableCollection<Job>();
+            _eventMasterList = new ObservableCollection<Event>();
+            _scheduleMasterList = new ObservableCollection<Schedule>();
+            _volunteerMasterList = new ObservableCollection<Volunteer>();
+            _skillSetMasterList = new ObservableCollection<SkillSet>();
+            _skillSetMasterList.Add(new SkillSet("Testing"));
+            _skillSetMasterList.Add(new SkillSet("Testing2"));
+            _skillSetMasterList.Add(new SkillSet("Testing4"));
             _IDGenerator = new IDGen();
         }
         public ApplicationData(string s)
@@ -30,22 +38,27 @@ namespace AntiochVolunteer.Models
         }
 
         #region Public properties
-        public List<Job> JobMasterList
+        public ObservableCollection<Job> JobMasterList
         {
             get { return _jobsMasterList; }
         }
-        public List<Event> EventMasterList
+        public ObservableCollection<Event> EventMasterList
         {
             get { return _eventMasterList; }
         }
-        public List<Schedule> ScheduleMasterList
+        public ObservableCollection<Schedule> ScheduleMasterList
         {
             get { return _scheduleMasterList; }
         }
-        public List<Volunteer> VolunteerMasterList
+        public ObservableCollection<Volunteer> VolunteerMasterList
         {
             get { return _volunteerMasterList; }
         }
+        public ObservableCollection<SkillSet> SkillSetMasterList
+        {
+            get { return _skillSetMasterList; }
+        }
+
         #endregion
     }
 }

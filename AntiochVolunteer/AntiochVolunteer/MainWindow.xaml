@@ -4,7 +4,7 @@
         xmlns:vm="clr-namespace:AntiochVolunteer.ViewModels"
         xmlns:strings="clr-namespace:AntiochVolunteer.Resources.Strings"
         xmlns:res="clr-namespace:AntiochVolunteer.Resources"
-        Title="{Binding DisplayName}" Height="350" Width="525">
+        Title="{Binding DisplayName}" Height="350" Width="960">
 
     <Window.Resources>
         <ResourceDictionary Source="MainWindowResources.xaml" />

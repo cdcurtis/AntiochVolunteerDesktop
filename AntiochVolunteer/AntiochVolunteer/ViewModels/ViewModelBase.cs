@@ -61,7 +61,15 @@ namespace AntiochVolunteer.ViewModels
         /// Raised when a property on this object has a new value.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-
+        #region PropertyChanged
+        public void NotifyPropertyChanged(String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        #endregion
         /// <summary>
         /// Raises this object's PropertyChanged event.
         /// </summary>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Chris\Documents\Visual Studio 2012\Projects\AntiochVolunteerDesktop\AntiochVolunteer\AntiochVolunteer\App.xaml
-7-1044544915
+8226624949
 
-29-102862831
+32-687896087
 12-1401562060
-MainWindow.xaml;MainWindowResources.xaml;Views\AddEventDlgView.xaml;Views\AddJobDlgView.xaml;Views\AddScheduleDlgView.xaml;Views\AddVolunteerDlgView.xaml;Views\WelcomeView.xaml;
+MainWindow.xaml;MainWindowResources.xaml;Views\AddEventDlgView.xaml;Views\AddJobDlgView.xaml;Views\AddScheduleDlgView.xaml;Views\AddVolunteerDlgView.xaml;Views\VolunteersView.xaml;Views\WelcomeView.xaml;
 
-True
+False
 
