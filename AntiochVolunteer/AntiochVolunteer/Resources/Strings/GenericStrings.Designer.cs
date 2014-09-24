@@ -232,6 +232,15 @@ namespace AntiochVolunteer.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;-.
+        /// </summary>
+        public static string LEFT_ARROW {
+            get {
+                return ResourceManager.GetString("LEFT_ARROW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minimum number of Volunteers for this job.
         /// </summary>
         public static string MIN_VOL_MESSAGE {
@@ -246,6 +255,15 @@ namespace AntiochVolunteer.Resources.Strings {
         public static string NAME {
             get {
                 return ResourceManager.GetString("NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string NO {
+            get {
+                return ResourceManager.GetString("NO", resourceCulture);
             }
         }
         
@@ -277,6 +295,15 @@ namespace AntiochVolunteer.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -&gt;.
+        /// </summary>
+        public static string RIGHT_ARROW {
+            get {
+                return ResourceManager.GetString("RIGHT_ARROW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Schedule.
         /// </summary>
         public static string SCHEDULE {
@@ -300,6 +327,15 @@ namespace AntiochVolunteer.Resources.Strings {
         public static string SELECT_SKILL_SETS {
             get {
                 return ResourceManager.GetString("SELECT_SKILL_SETS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skills.
+        /// </summary>
+        public static string SKILLS {
+            get {
+                return ResourceManager.GetString("SKILLS", resourceCulture);
             }
         }
         
@@ -363,6 +399,15 @@ namespace AntiochVolunteer.Resources.Strings {
         public static string VOLUNTEERS {
             get {
                 return ResourceManager.GetString("VOLUNTEERS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string YES {
+            get {
+                return ResourceManager.GetString("YES", resourceCulture);
             }
         }
     }

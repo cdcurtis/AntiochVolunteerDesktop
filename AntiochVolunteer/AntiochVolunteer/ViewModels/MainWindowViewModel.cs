@@ -28,6 +28,7 @@ namespace AntiochVolunteer.ViewModels
             OnCreateNewVolunteer = new RelayCommand(() => OpenCreateNewVolunteerDlg());
             OnOpenVolunteersPage = new RelayCommand(() => OpenVolunteerView());
             OnCreateNewJob = new RelayCommand(() => OpenCreateNewJobDlg());
+            OnOpenJobsPage = new RelayCommand(() => OpenJobsPage());
             OnCreateNewSchedule = new RelayCommand(() => OpenCreateNewScheduleDlg());
 
 
@@ -73,6 +74,10 @@ namespace AntiochVolunteer.ViewModels
             CurrentViewModel = new AddVolunteerDlgViewModel(this);
         }
         public ICommand OnOpenJobsPage { get; private set; }
+        private void OpenJobsPage()
+        {
+            CurrentViewModel = new JobsViewModel(this);
+        }
         public ICommand OnCreateNewJob { get; private set; }
         private void OpenCreateNewJobDlg()
         {

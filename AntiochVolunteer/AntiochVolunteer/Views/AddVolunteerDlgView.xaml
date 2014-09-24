@@ -6,7 +6,8 @@
              xmlns:strings="clr-namespace:AntiochVolunteer.Resources.Strings"
              mc:Ignorable="d" 
              d:DesignWidth="960">
-    <Grid MaxWidth="500">
+    
+    <Grid MaxWidth="500" ScrollViewer.CanContentScroll="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -56,24 +57,39 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Text="{x:Static strings:GenericStrings.SELECT_SKILL_SETS}" TextAlignment="Center"/>
-                    <ListBox Grid.Row="1" 
-                              ItemsSource="{Binding SkillSetList}"
-                              
-                              SelectionMode="Multiple"
-                             >
-
-
-                    </ListBox>
-                    <Grid Grid.Row="2">
+                    <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="18*"/>
-                            <ColumnDefinition Width="97*"/>
-                            <ColumnDefinition Width="31*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListBox Grid.Column="0"
+                              ItemsSource="{Binding SelectedSkillSetList}"
+                              SelectedIndex="{Binding SelectedSkillIndex}"
+                              SelectionMode="Single"
+                             />
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button Margin="10" Grid.Row="0"  Content="{x:Static strings:GenericStrings.LEFT_ARROW}" Command="{Binding OnLeftArrow}"/>
+                            <Button Margin="10" Grid.Row="1" Content="{x:Static strings:GenericStrings.RIGHT_ARROW}" Command="{Binding OnRightArrow}"/>
+                        </Grid>
+                        <ListBox Grid.Column="2"
+                              ItemsSource="{Binding SkillSetList}"
+                              SelectedIndex="{Binding MasterSkillIndex}"
+                              SelectionMode="Single"
+                             />
+                </Grid>
+                <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="5"/>
                             <ColumnDefinition Width="150"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Column="0" Margin="10,10,10,9.6" Text="{Binding OtherSkill}" Grid.ColumnSpan="3"></TextBox>
-                        <Button Grid.Column="4" Content="{x:Static strings:GenericStrings.ADD_SKILL}" Margin="10.2,10,10.2,9.6" Command="{Binding OnAddSkill}"/>
+                        <TextBox Grid.Column="0" Margin="10,10,10,10" Text="{Binding OtherSkill}"></TextBox>
+                        <Button Grid.Column="2" Content="{x:Static strings:GenericStrings.ADD_SKILL}" Margin="10,10,10,10" Command="{Binding OnAddSkill}"/>
                     </Grid>
                 </Grid>
             </Grid>

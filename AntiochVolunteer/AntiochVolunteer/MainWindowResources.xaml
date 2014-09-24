@@ -10,11 +10,15 @@
     <DataTemplate DataType="{x:Type vm:VolunteersViewModel}">
         <vw:VolunteersView/>
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type vm:AddVolunteerDlgViewModel}">
         <vw:AddVolunteerDlgView/>
     </DataTemplate>
-    
+
+    <DataTemplate DataType="{x:Type vm:JobsViewModel}">
+        <vw:JobsView/>
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:AddJobDlgViewModel}">
         <vw:AddJobDlgView/>
     </DataTemplate>

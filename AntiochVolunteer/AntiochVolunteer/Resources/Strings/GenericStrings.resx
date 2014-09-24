@@ -174,11 +174,17 @@
   <data name="LAST_NAME" xml:space="preserve">
     <value>Last Name</value>
   </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>&lt;-</value>
+  </data>
   <data name="MIN_VOL_MESSAGE" xml:space="preserve">
     <value>Minimum number of Volunteers for this job</value>
   </data>
   <data name="NAME" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="NO" xml:space="preserve">
+    <value>No</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
@@ -189,6 +195,9 @@
   <data name="REC_VOL_MESSAGE" xml:space="preserve">
     <value>Recommended number of Volunteers for this job</value>
   </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>-&gt;</value>
+  </data>
   <data name="SCHEDULE" xml:space="preserve">
     <value>Schedule</value>
   </data>
@@ -197,6 +206,9 @@
   </data>
   <data name="SELECT_SKILL_SETS" xml:space="preserve">
     <value>Select skills sets from below</value>
+  </data>
+  <data name="SKILLS" xml:space="preserve">
+    <value>Skills</value>
   </data>
   <data name="TEMPLATE_MESSAGE" xml:space="preserve">
     <value>Is this a recurring event?</value>
@@ -218,5 +230,8 @@
   </data>
   <data name="VOLUNTEERS" xml:space="preserve">
     <value>Volunteers</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

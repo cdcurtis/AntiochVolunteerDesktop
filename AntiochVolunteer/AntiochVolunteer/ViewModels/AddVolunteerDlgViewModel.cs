@@ -20,7 +20,8 @@ namespace AntiochVolunteer.ViewModels
         private string _lastNameBrush;
         private string _emailBrush;
         private string _phoneBrush;
-        private  string _otherSkill;
+        private string _otherSkill;
+        private ObservableCollection<string> _selectedskillSet;
         #endregion
 
         #region Constructors
@@ -45,12 +46,17 @@ namespace AntiochVolunteer.ViewModels
             UserFirstName = v.FirstName;
             UserLastName = v.LastName;
             UserPhone = v.Phone;
-            SetCommandsAndSkills();
+
+            SetCommandsAndSkills(v.Skills);
         }
 
-        private void SetCommandsAndSkills()
+        private void SetCommandsAndSkills(ObservableCollection<String> skills = null )
         {
             _skillSet = new ObservableCollection<string>();
+            if (skills == null)
+                _selectedskillSet = new ObservableCollection<string>();
+            else
+                _selectedskillSet = skills;
             foreach (SkillSet s in (_parent as MainWindowViewModel).AppData.SkillSetMasterList)
                 _skillSet.Add(s.Skill);
             NotifyPropertyChanged("SkillSetList");
@@ -58,21 +64,58 @@ namespace AntiochVolunteer.ViewModels
 
             OnOK = new RelayCommand(() => OnOKCommand());
             OnAddSkill = new RelayCommand(() => OnAddSkillCommand());
+            OnLeftArrow = new RelayCommand(() => OnLeftArrowCommand());
+            OnRightArrow = new RelayCommand(() => OnRightArrowCommand());
         }
 
         #endregion
-
+        
         #region ICommands
+        public ICommand OnLeftArrow { get; set; }
+        public ICommand OnRightArrow { get; set; }
+
+        void OnLeftArrowCommand()
+        {
+            if (SkillSetList.Count == 0 || SkillSetList.Count < MasterSkillIndex || MasterSkillIndex < 0)
+                return;
+            string newItem = SkillSetList[MasterSkillIndex];
+            foreach (string s in _selectedskillSet)
+                if (s == newItem)
+                    return;
+            _selectedskillSet.Add(newItem);
+            NotifyPropertyChanged("SelectedSkillSetList");
+        }
+        void OnRightArrowCommand()
+        {
+            if(_selectedskillSet.Count == 0 || _selectedskillSet.Count < SelectedSkillIndex || SelectedSkillIndex < 0)
+                return;
+            _selectedskillSet.RemoveAt(SelectedSkillIndex);
+            NotifyPropertyChanged("SelectedSkillSetList");
+        }
+
         public ICommand OnOK { get; set; }
         private void OnOKCommand()
         {//TODO::View validation edits on Volunteer error.
             try
             {
-                
-                Volunteer v = new Volunteer(UserFirstName, UserLastName, UserEmail, UserPhone, null);
-                (_parent as MainWindowViewModel).AppData.VolunteerMasterList.Add(v);
-                ErrorMessage = "";
-                (_parent as MainWindowViewModel).CurrentViewModel = new VolunteersViewModel(_parent);
+                if (_editedIndex == -1)
+                {
+                    Volunteer v = new Volunteer(UserFirstName, UserLastName, UserEmail, UserPhone, _selectedskillSet);
+                    (_parent as MainWindowViewModel).AppData.VolunteerMasterList.Add(v);
+                    ErrorMessage = "";
+                    (_parent as MainWindowViewModel).CurrentViewModel = new VolunteersViewModel(_parent);
+                }
+                else
+                {
+                    (_parent as MainWindowViewModel).AppData.VolunteerMasterList[_editedIndex].FirstName = UserFirstName;
+                    (_parent as MainWindowViewModel).AppData.VolunteerMasterList[_editedIndex].LastName = UserLastName;
+                    (_parent as MainWindowViewModel).AppData.VolunteerMasterList[_editedIndex].Email = UserEmail;
+                    (_parent as MainWindowViewModel).AppData.VolunteerMasterList[_editedIndex].Phone = UserPhone;
+                    (_parent as MainWindowViewModel).AppData.VolunteerMasterList[_editedIndex].Skills = _selectedskillSet;
+                    
+                    (_parent as MainWindowViewModel).CurrentViewModel = new VolunteersViewModel(_parent);
+                }
+
             }
             catch (VolunteerErrorCode e)
             {
@@ -189,6 +232,14 @@ namespace AntiochVolunteer.ViewModels
                 return _skillSet;
             }
         }
+        public ObservableCollection<string> SelectedSkillSetList
+        {
+            get
+            {
+                return _selectedskillSet;
+            }
+        }
+
         public string OtherSkill
         {
             get
@@ -199,6 +250,16 @@ namespace AntiochVolunteer.ViewModels
             {
                 _otherSkill = value;
             }
+        }
+        public int SelectedSkillIndex
+        {
+            get;
+            set;
+        }
+        public int MasterSkillIndex
+        {
+            get;
+            set;
         }
         #endregion
     }

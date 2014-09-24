@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace AntiochVolunteer.Models
 {
@@ -10,15 +11,16 @@ namespace AntiochVolunteer.Models
     {
         public Job()
         {
-           ComboJobs = new List<long>();
+            ComboJobs = new ObservableCollection<string>();
            CanBePreformedByAnyone = true;
         }
-        public Job(long id, string n, string d, List<long> l, bool canBePreformedByAnyone = true)
+        public Job(long id, string n, string d, ObservableCollection<String> l, ObservableCollection<String> skills, bool canBePreformedByAnyone = true)
         {
             ID = id;
             Name = n;
             Description = d;
             ComboJobs = l;
+            SkillsRequired = skills;
             CanBePreformedByAnyone = canBePreformedByAnyone;
         }
 
@@ -40,7 +42,7 @@ namespace AntiochVolunteer.Models
             get;
             set;
         }
-        public List<long> ComboJobs
+        public ObservableCollection<String> ComboJobs
         {
             get;
             protected set;
@@ -56,6 +58,16 @@ namespace AntiochVolunteer.Models
             set;
         }
         public bool CanBePreformedByAnyone
+        {
+            get;
+            set;
+        }
+        public ObservableCollection<string> JobConcurrency
+        {
+            get;
+            set;
+        }
+        public ObservableCollection<string> SkillsRequired
         {
             get;
             set;

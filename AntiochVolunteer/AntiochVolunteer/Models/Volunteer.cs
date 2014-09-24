@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace AntiochVolunteer.Models
 {
@@ -26,14 +27,14 @@ namespace AntiochVolunteer.Models
     {
         public Volunteer() 
         {
-            Skills = new List<string>();
+            Skills = new ObservableCollection<string>();
             DatesRequestedOff = new List<DateTime>();
             FirstName = "John";
             LastName = "Doe";
             Email = "JDoe@email.com";
             Phone = "1234567890";
         }
-        public Volunteer(String fn, String ln, String email, String phone, List<string> skills) 
+        public Volunteer(String fn, String ln, String email, String phone, ObservableCollection<string> skills) 
         {
             FirstName = fn;
             LastName = ln;
@@ -74,7 +75,7 @@ namespace AntiochVolunteer.Models
             set;
         }
 
-        public List<String> Skills
+        public ObservableCollection<String> Skills
         {
             get;
             set;

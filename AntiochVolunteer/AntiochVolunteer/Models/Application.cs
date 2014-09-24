@@ -58,7 +58,10 @@ namespace AntiochVolunteer.Models
         {
             get { return _skillSetMasterList; }
         }
-
+        public long GetNewID()
+        {
+            return _IDGenerator.NewID;
+        }
         #endregion
     }
 }
