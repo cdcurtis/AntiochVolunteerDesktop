@@ -10,8 +10,6 @@
 //------------------------------------------------------------------------------
 
 using AntiochVolunteer.Resources.Strings;
-using AntiochVolunteer.ViewModels;
-using AntiochVolunteer.Views;
 using System;
 using System.Diagnostics;
 using System.Windows;

@@ -82,7 +82,7 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static strings:GenericStrings.CAN_BE_PREFORMED_BY_ANYONE}" Margin="10"/>
-                        <TextBlock Grid.Column="2"  Margin="10" Text="{Binding IsGenericJobString}"/>
+                        <TextBlock Grid.Column="2"  Margin="10" Text="{Binding IsGenericJob}"/>
                        
 
                     </Grid>
