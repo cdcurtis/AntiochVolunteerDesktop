@@ -12,10 +12,14 @@ namespace AntiochVolunteer.Models
         public Job()
         {
             ComboJobs = new ObservableCollection<string>();
-           CanBePreformedByAnyone = true;
+            SkillsRequired = new ObservableCollection<string>();
+            CanBePreformedByAnyone = true;
         }
         public Job(long id, string n, string d, ObservableCollection<String> l, ObservableCollection<String> skills, bool canBePreformedByAnyone = true)
         {
+            ComboJobs = new ObservableCollection<string>();
+            SkillsRequired = new ObservableCollection<string>();
+
             ID = id;
             Name = n;
             Description = d;
@@ -45,7 +49,7 @@ namespace AntiochVolunteer.Models
         public ObservableCollection<String> ComboJobs
         {
             get;
-            protected set;
+            set;
         }
         public int MinimumVolenteersNeededToPreform
         {
@@ -58,11 +62,6 @@ namespace AntiochVolunteer.Models
             set;
         }
         public bool CanBePreformedByAnyone
-        {
-            get;
-            set;
-        }
-        public ObservableCollection<string> JobConcurrency
         {
             get;
             set;

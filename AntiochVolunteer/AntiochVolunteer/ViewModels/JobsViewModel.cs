@@ -27,6 +27,10 @@ namespace AntiochVolunteer.ViewModels
             _app = (parent as MainWindowViewModel).AppData;
             JobList = _app.JobMasterList;
             NotifyPropertyChanged("JobList");
+            SelectedIndex = JobList.Count > 0 ? 0 : -1;
+
+            OnEdit = new RelayCommand(() => OnEditCommand());
+            OnDelete = new RelayCommand(() => OnDeleteCommand());
         }
 
         private void PopulateJobData()
@@ -36,7 +40,28 @@ namespace AntiochVolunteer.ViewModels
             Job j = JobList[_selectedIndex];
             JobName = j.Name;
             JobDescription = j.Description;
+            MinVolenteersNeeded = j.MinimumVolenteersNeededToPreform.ToString();
+            RecVolenteersNeeded = j.RecommendedVolenteersNeededToPreform.ToString();
+            IsGenericJob = j.CanBePreformedByAnyone ? "Yes" : "No";
+            _selectedJobList = j.ComboJobs;
+            _selectedSkillSetList = j.SkillsRequired;
 
+            NotifyPropertyChanged("SelectedJobList");
+            NotifyPropertyChanged("SelectedSkillSetList");
+        }
+        private void ClearJobData()
+        {
+            _selectedIndex = -1;
+            JobName = "";
+            JobDescription = "";
+            MinVolenteersNeeded = "";
+            RecVolenteersNeeded = "";
+            IsGenericJob = "";
+            _selectedJobList.Clear();
+            _selectedSkillSetList.Clear(); ;
+
+            NotifyPropertyChanged("SelectedJobList");
+            NotifyPropertyChanged("SelectedSkillSetList");
         }
 
         #region ICommands
@@ -53,12 +78,22 @@ namespace AntiochVolunteer.ViewModels
             int indexToBeRemoved = _selectedIndex;
             if (indexToBeRemoved < 0 || indexToBeRemoved >= JobList.Count)
                 return;
+            Job j = JobList[indexToBeRemoved];
+            foreach(Job mJob in _app.JobMasterList)
+            {
+                int index = mJob.ComboJobs.IndexOf(j.Name);
+                if(index >= 0)
+                    mJob.ComboJobs.RemoveAt(index);
+            }
+
             JobList.RemoveAt(indexToBeRemoved);
 
             NotifyPropertyChanged("JobList");
-            
+            ClearJobData();
           
         }
+
+
         #endregion
         #region Public Properties
         public ObservableCollection<Job> JobList { get; protected set; }

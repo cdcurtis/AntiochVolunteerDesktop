@@ -16,10 +16,15 @@
                   ItemsSource="{Binding JobList}"
                   AutoGenerateColumns="True"
                   CanUserAddRows="False"
-                  SelectedIndex="{Binding JobSelectedIndex}"
+                  SelectedIndex="{Binding SelectedIndex}"
                   >
         </DataGrid>
-        <GroupBox Grid.Column="1" Margin="10"  Header="{x:Static strings:GenericStrings.JOBS}">
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Row="0" Margin="10"  Header="{x:Static strings:GenericStrings.JOBS}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -74,7 +79,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="5"/>
                             <ColumnDefinition Width="*"/>
-               
+
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -83,7 +88,7 @@
 
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static strings:GenericStrings.CAN_BE_PREFORMED_BY_ANYONE}" Margin="10"/>
                         <TextBlock Grid.Column="2"  Margin="10" Text="{Binding IsGenericJob}"/>
-                       
+
 
                     </Grid>
                     <Grid Grid.Row="3" Margin="10">
@@ -119,7 +124,18 @@
                 </Grid>
             </Grid>
         </GroupBox>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="2" Content="Edit" Margin="10" Command="{Binding OnEdit}"/>
+                <Button Grid.Column="3" Content="Delete" Margin="10" Command="{Binding OnDelete}"/>
+            </Grid>
 
 
+        </Grid>
     </Grid>
 </UserControl>
